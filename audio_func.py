@@ -1,5 +1,5 @@
 import pyaudio
-from numpy import frombuffer
+import numpy as np
 import sys
 import time
 from ui_func import virtual_console_print as print
@@ -68,7 +68,7 @@ class AudioClass:
     def get_input_volume(self, device_all_info):
         if self.is_streamed == True:
             try:
-                return (frombuffer(self.stream.read(1024), dtype="int16") / 32768.0).max()
+                return (np.frombuffer(self.stream.read(1024), dtype="int16") / 32768.0).max()
             except OSError as e:
                 print("[Error] stream closed " + str(e.args))
                 return 0.0

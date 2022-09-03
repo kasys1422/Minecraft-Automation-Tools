@@ -2,7 +2,7 @@ import json
 import dearpygui.dearpygui as dpg
 from ui_func import virtual_console_print as print
 
-SOFTWARE_VERSION = "2.0.1"
+SOFTWARE_VERSION = "2.0.2"
 DEFAULT_SETTINGS_VALUE = {
                            "version":1,
                            "font_path":"./resources/Mplus1-Medium.ttf",
