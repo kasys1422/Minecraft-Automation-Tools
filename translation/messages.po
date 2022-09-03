@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-09-02 20:12+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ../ui_func.py:48
+msgid "Threshold for pulling up the fishing rod"
+msgstr "釣竿を引き揚げるしきい値"
+
+#: ../ui_func.py:50 ../ui_func.py:66
+msgid "Option"
+msgstr "オプション"
+
+#: ../ui_func.py:51
+msgid "Audio input device"
+msgstr "録音デバイス"
+
+#: ../ui_func.py:52
+msgid "Automatically minimize windows when launching tools"
+msgstr "ツール開始時に自動的にウィンドウを最小化"
+
+#: ../ui_func.py:53
+msgid "Apply"
+msgstr "適用"
+
+#: ../ui_func.py:55 ../ui_func.py:70
+msgid "How to use"
+msgstr "使い方"
+
+#: ../ui_func.py:56
+msgid "1. Set the audio input device (a device that can record in-game music, such as Stereo Mix) and threshold."
+msgstr "1. 音声入力デバイス（「ステレオミキサー」などゲーム内の音楽を録音できるデバイス）としきい値を設定します。"
+
+#: ../ui_func.py:57
+msgid "2. Press \"Start Fishing\"."
+msgstr "2. 「Start Fishing」ボタンを押します。"
+
+#: ../ui_func.py:58
+msgid "3. Start fishing in the game."
+msgstr "3. ゲーム内で釣りを始めます。"
+
+#: ../ui_func.py:59
+msgid "4. Fishing is done automatically."
+msgstr "4. 釣りが自動的に行われます。"
+
+#: ../ui_func.py:60
+msgid "5. Press the middle mouse button or \"Stop Fishing\" to exit."
+msgstr "5. マウスの中ボタンを押すか、「Stop Fishing」を押すと終了します。"
+
+#: ../ui_func.py:71
+msgid "1. Press \"Start\" button."
+msgstr "1. 「Start Fishing」ボタンを押します。"
+
+#: ../ui_func.py:72
+msgid "2. Press left click once."
+msgstr "2. 左クリックを1回押します。"
+
+#: ../ui_func.py:73
+msgid "3. The left click is automatically pressed at regular intervals."
+msgstr "3. 左クリックが一定時間ごとに自動的に押されます。"
+
+#: ../ui_func.py:74
+msgid "4. Press the middle mouse button or \"Stop\" button to exit."
+msgstr "4. マウスの中ボタンを押すか、「Stop」を押すと終了します。"
+
+#: ../ui_func.py:77 ../ui_func.py:78
+msgid "Software Information"
+msgstr "ソフトウェア情報"
+
+#: ../ui_func.py:80
+msgid "Third Party License"
+msgstr "サードパーティライセンス"
+
+#: ../key_func.py:41
+msgid "Stop Fishing"
+msgstr "Stop Fishing"
+
+#: ../key_func.py:45 ../key_func.py:62
+msgid "Start Fishing"
+msgstr "Start Fishing"
+
+#: ../key_func.py:52
+msgid "Stop"
+msgstr "Stop"
+
+#: ../key_func.py:56 ../key_func.py:66
+msgid "Start"
+msgstr "Start"
+

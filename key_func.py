@@ -4,6 +4,8 @@ import ctypes
 import platform
 import gettext
 import locale
+from ui_func import virtual_console_print as print
+from ui_func import virtual_console_update as update_console
 
 def GetTranslationData(disable_translation=False):
     now_locale, _ = locale.getdefaultlocale()
@@ -37,11 +39,12 @@ class KeyClass:
             self.change_state("fishing_enable")
             if self.settings.get_value("auto_hide_fishing", False) == True:
                 view_port_func()
-
+            print("[Info] start fishing")
             return _("Stop Fishing")
             pass
         else:
             self.change_state("stop")
+            print("[Info] stop fishing")
             return _("Start Fishing")
 
     def start_stop_trap(self, view_port_func):
@@ -49,10 +52,12 @@ class KeyClass:
             self.change_state("trap_enable")
             if self.settings.get_value("auto_hide_trap", False) == True:
                 view_port_func()
+            print("[Info] start trap tool")
             return _("Stop")
             pass
         else:
             self.change_state("stop")
+            print("[Info] stop trap tool")
             return _("Start")
 
     def stop_all_tools(self, ui):
@@ -60,10 +65,12 @@ class KeyClass:
             if self.state == "fishing_enable" or self.state == "wait_after_pull_up_the_fishing_rod" or self.state == "use_the_fishing_rod":
                 mouse.click('right')
                 ui.configure_item_label('fishing_button', label=_("Start Fishing"))
+                print("[Info] stop fishing")
                 if self.settings.get_value("auto_hide_fishing", False) == True:
                     ui.maximize_viewport()
             if self.state == "trap_enable" or self.state == "attack":
                 ui.configure_item_label('trap_button', label=_("Start"))
+                print("[Info] stop trap tool")
                 if self.settings.get_value("auto_hide_trap", False) == True:
                     ui.maximize_viewport()
             self.change_state("stop")
@@ -83,6 +90,7 @@ class KeyClass:
         # fishing
         elif self.state == "fishing_enable":
             if vol > ui.get_value("threshold") / 100:
+                print("[Info] hit a fish")
                 self.change_state("wait_after_pull_up_the_fishing_rod")
                 mouse.click('right')
             pass
@@ -92,6 +100,7 @@ class KeyClass:
             pass
         elif self.state == "use_the_fishing_rod_again":
             if time.time() - self.last_time > 0.5:
+                print("[Info] fishing again")
                 mouse.click('right')
                 self.change_state("wait_next_fishing")
             pass
@@ -104,9 +113,14 @@ class KeyClass:
         elif self.state == "trap_enable":
             if mouse.is_pressed(button='left') == True:
                 self.change_state("attack")
+                print("[Info] first attack")
         elif self.state == "attack":
             if time.time() - self.last_time > 1.0 / 1.7:
                 mouse.click('left')
+                print("[Info] attack")
                 self.last_time = time.time()
             pass
         pass
+
+        # update console
+        update_console()
