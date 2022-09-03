@@ -62,17 +62,17 @@ class KeyClass:
 
     def stop_all_tools(self, ui):
         if self.state != "stop":
-            if self.state == "fishing_enable" or self.state == "wait_after_pull_up_the_fishing_rod" or self.state == "use_the_fishing_rod":
+            if self.state == "fishing_enable" or self.state == "wait_after_pull_up_the_fishing_rod" or self.state == "use_the_fishing_rod_again" or self.state == "wait_next_fishing":
                 mouse.click('right')
-                ui.configure_item_label('fishing_button', label=_("Start Fishing"))
-                print("[Info] stop fishing")
                 if self.settings.get_value("auto_hide_fishing", False) == True:
                     ui.maximize_viewport()
-            if self.state == "trap_enable" or self.state == "attack":
-                ui.configure_item_label('trap_button', label=_("Start"))
-                print("[Info] stop trap tool")
+                ui.configure_item_label('fishing_button', label=_("Start Fishing"))
+                print("[Info] stop fishing")
+            elif self.state == "trap_enable" or self.state == "attack":
                 if self.settings.get_value("auto_hide_trap", False) == True:
                     ui.maximize_viewport()
+                ui.configure_item_label('trap_button', label=_("Start"))
+                print("[Info] stop trap tool")
             self.change_state("stop")
 
     def loop(self, settings, audio, ui):
