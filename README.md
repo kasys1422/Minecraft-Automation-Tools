@@ -5,9 +5,9 @@ Automation tools of minecraft
 You can automate works like fishing in Minecraft without installing any mods.
 
 ## Tools
-* ### Minecraft Auto Fishing Tool
+### Minecraft Auto Fishing Tool
 A recording device is used to detect the sound of the fishing rod's float sinking and automatically control the mouse button.
-* ### Minecraft Trap Automation Tool
+### Minecraft Trap Automation Tool
 Left click at regular intervals.
 
 ## Download
