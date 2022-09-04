@@ -195,16 +195,17 @@ class GuiClass:
 
     def apply_settings(self, mode="Fishing", save_flag=False):
         if mode=="Fishing":
-            virtual_console_print("[Info] apply fishing options")
-            device = {
-                     "name":self.audio.device_list["name"][self.audio.device_list["name"].index(self.get_value("audio_input_device_combo"))],
-                     "all_info":self.audio.device_list["all_info"][self.audio.device_list["name"].index(self.get_value("audio_input_device_combo"))],
-                     }
-            self.settings.set_value("device", device)
-            self.settings.set_value("auto_hide_fishing", dpg.get_value("auto_hide_fishing"))
-            self.audio.restart_stream(self.settings.get_value("device"))
-            virtual_console_print("[Info] successfully applied(device="+str(device["name"])+", auto_hide_fishing=" + str(dpg.get_value("auto_hide_fishing"))+")")
-            dpg.set_value("audio_input_device_combo", self.settings.get_value("device")["name"])
+            if self.audio.is_streamed == True:
+                virtual_console_print("[Info] apply fishing options")
+                device = {
+                         "name":self.audio.device_list["name"][self.audio.device_list["name"].index(self.get_value("audio_input_device_combo"))],
+                         "all_info":self.audio.device_list["all_info"][self.audio.device_list["name"].index(self.get_value("audio_input_device_combo"))],
+                         }
+                self.settings.set_value("device", device)
+                self.settings.set_value("auto_hide_fishing", dpg.get_value("auto_hide_fishing"))
+                self.audio.restart_stream(self.settings.get_value("device"))
+                virtual_console_print("[Info] successfully applied(device="+str(device["name"])+", auto_hide_fishing=" + str(dpg.get_value("auto_hide_fishing"))+")")
+                dpg.set_value("audio_input_device_combo", self.settings.get_value("device")["name"])
         elif mode=="Trap":
             virtual_console_print("[Info] apply trap options")
             self.settings.set_value("auto_hide_trap", dpg.get_value("auto_hide_trap"))

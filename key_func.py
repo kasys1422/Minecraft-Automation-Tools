@@ -2,20 +2,9 @@ import mouse
 import time
 import ctypes
 import platform
-import gettext
-import locale
+from ui_func import _
 from ui_func import virtual_console_print as print
 from ui_func import virtual_console_update as update_console
-
-def GetTranslationData(disable_translation=False):
-    now_locale, _ = locale.getdefaultlocale()
-    if disable_translation == True:
-        now_locale = 'en-US'    
-    return gettext.translation(domain='messages',
-                            localedir = './resources/locale',
-                            languages=[now_locale], 
-                            fallback=True).gettext
-_ = GetTranslationData()
 
 def mouse_ispressed_middle():
     if platform.system() == "Windows":

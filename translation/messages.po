@@ -99,3 +99,5 @@ msgstr "Stop"
 msgid "Start"
 msgstr "Start"
 
+msgid "Recording device not found"
+msgstr "録音デバイスが見つかりません"

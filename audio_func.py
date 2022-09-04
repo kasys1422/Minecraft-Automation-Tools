@@ -3,7 +3,7 @@ import numpy as np
 import sys
 import time
 from ui_func import virtual_console_print as print
-
+from ui_func import _
 
 class AudioClass:
     def __init__(self, settings):
@@ -24,9 +24,14 @@ class AudioClass:
             self.device = self.settings.get_value("device")
             print("[Info] a saved device(" + str(self.settings.get_value("device")["name"]) + ") has been found, use this device")
         else:
-            self.settings.set_value("device", {"name":self.device_list["all_info"][0]["name"], "all_info":self.device_list["all_info"][0]})
-            self.device = self.settings.get_value("device")
-            print("[Info] no saved device found, use default device")
+            if len(self.device_list["all_info"]) > 0:
+                self.settings.set_value("device", {"name":self.device_list["all_info"][0]["name"], "all_info":self.device_list["all_info"][0]})
+                self.device = self.settings.get_value("device")
+                print("[Info] no saved device found, use default device")
+            else:
+                self.settings.set_value("device", {"name":_("Recording device not found"), "all_info": None})
+                self.device = self.settings.get_value("device")
+                print("[Info] recording device not found, disable recording function")
 
     def start_stream(self, device):
         print("[Info] start stream")
@@ -41,15 +46,15 @@ class AudioClass:
 
     def open_stream(self, device):
         try:
-            print("[Info] open stream")
-            self.stream = self.audio.open(format = pyaudio.paInt16,
-                                   channels = int(device["all_info"]["maxInputChannels"]),
-                                   rate = int(device["all_info"]["defaultSampleRate"]),
-                                   input = True,
-                                   frames_per_buffer = 1024,
-                                   input_device_index = int(device["all_info"]["index"]))
-            
-            self.is_streamed = True
+            if(self.settings.get_value("device")["name"] != _("Recording device not found")):
+                print("[Info] open stream")
+                self.stream = self.audio.open(format = pyaudio.paInt16,
+                                       channels = int(device["all_info"]["maxInputChannels"]),
+                                       rate = int(device["all_info"]["defaultSampleRate"]),
+                                       input = True,
+                                       frames_per_buffer = 1024,
+                                       input_device_index = int(device["all_info"]["index"])) 
+                self.is_streamed = True
         except OSError as e:
             print("[Error] cannot open stream, use default device" + str(e.args))
             self.settings.set_value("device", {"name":self.device_list["all_info"][0]["name"], "all_info":self.device_list["all_info"][0]})
