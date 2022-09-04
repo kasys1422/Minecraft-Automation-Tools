@@ -4,6 +4,7 @@ import sys
 import time
 from ui_func import virtual_console_print as print
 
+
 class AudioClass:
     def __init__(self, settings):
         self.settings = settings
